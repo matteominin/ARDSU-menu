@@ -47,7 +47,7 @@ async function parseData(dataBuffer, regex, monthNumber) {
     let day = [8, 9, 10, 11, 12, 13];
 
     let tmp = {
-        day: "",
+        date: "",
         first_course: [],
         second_course: [],
         side_dish: []
@@ -76,11 +76,11 @@ async function parseData(dataBuffer, regex, monthNumber) {
         count = (count + 1) % 3;
 
         if (count == 0) {
-            tmp.day = new Date(new Date().getFullYear(), monthNumber, day[dateIndex++] + 1).toUTCString();
+            tmp.date = new Date(new Date().getFullYear(), monthNumber, day[dateIndex++] + 1).toUTCString();
             parsedData.push(tmp);
 
             tmp = {
-                day: "",
+                date: "",
                 first_course: [],
                 second_course: [],
                 side_dish: []
