@@ -2,7 +2,7 @@ const fs = require("fs");
 const express = require("express");
 const { getPdfUrl, parseData, loadPdf } = require("./parser.js");
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 const months = ["gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno","luglio", "agosto", "settembre", "ottobre", "novembre", "dicembre"];
 
 /* REGEX */
@@ -16,7 +16,7 @@ app.get("/lunch", async (req, res) => {
     const buffer = await loadPdf(url);
     let obj = await parseData(buffer, getLunch, month);
 
-    res.json({obj});
+    res.json(obj);
 })
 
 app.get("/dinner", async (req, res) => {
@@ -26,7 +26,7 @@ app.get("/dinner", async (req, res) => {
     const buffer = await loadPdf(url);
     let obj = await parseData(buffer, getDinner, month);
 
-    res.send({obj});
+    res.send(obj);
 })
 
 
