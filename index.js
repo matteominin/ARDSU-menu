@@ -16,7 +16,7 @@ app.get("/lunch", async (req, res) => {
     const buffer = await loadPdf(url);
     let obj = await parseData(buffer, getLunch, month);
 
-    res.send(JSON.stringify(obj, null, "\t"));
+    res.json({obj});
 })
 
 app.get("/dinner", async (req, res) => {
@@ -26,7 +26,7 @@ app.get("/dinner", async (req, res) => {
     const buffer = await loadPdf(url);
     let obj = await parseData(buffer, getDinner, month);
 
-    res.send(JSON.stringify(obj, null, "\t"));
+    res.send({obj});
 })
 
 
