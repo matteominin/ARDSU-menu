@@ -77,7 +77,7 @@ async function parseData(dataBuffer, regex, monthNumber) {
 
         if (count == 0) {
             tmp.day = new Date(new Date().getFullYear(), monthNumber, day[dateIndex++] + 1);
-            parsedData.push(tmp);
+            parsedData.push({tmp});
 
             tmp = {
                 day: "",
