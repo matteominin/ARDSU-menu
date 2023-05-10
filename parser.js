@@ -50,7 +50,7 @@ async function parseData(dataBuffer, regex, monthNumber) {
 
     let tmp = {
         meal: String(regex) == String(getLunch) ? "lunch" : "dinner",
-        date: "",
+        date: new Date(),
         first_course: [],
         second_course: [],
         side_dish: []
@@ -84,7 +84,7 @@ async function parseData(dataBuffer, regex, monthNumber) {
 
             tmp = {
                 meal: String(regex) == String(getLunch) ? "lunch" : "dinner",
-                date: "",
+                date: new Date(),
                 first_course: [],
                 second_course: [],
                 side_dish: []
