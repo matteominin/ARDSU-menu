@@ -4,6 +4,8 @@ const pdf = require("pdf-parse");
 
 const getPdf = /(?<=<strong>Calamandrei&nbsp; &nbsp;<\/strong><br \/>\n<a href=")(.*)(?=")/gm
 const clearUrl = /\/[^\/]+(?=\/$|$)/g;
+const getLunch = /(?<=P\s+R\s+A\s+N\s+\s+Z\s+O)(.*)(?=C\s+E\s+N\s+A)/gms;
+
 
 async function getPdfUrl() {
     const res = await fetch("https://www.dsu.toscana.it/i-menu");
@@ -47,6 +49,7 @@ async function parseData(dataBuffer, regex, monthNumber) {
     let day = [8, 9, 10, 11, 12, 13];
 
     let tmp = {
+        meal: String(regex) == String(getLunch) ? "lunch" : "dinner",
         date: "",
         first_course: [],
         second_course: [],
@@ -76,10 +79,11 @@ async function parseData(dataBuffer, regex, monthNumber) {
         count = (count + 1) % 3;
 
         if (count == 0) {
-            tmp.date = new Date(new Date().getFullYear(), monthNumber, day[dateIndex++] + 1).toUTCString();
+            tmp.date = new Date(new Date().getFullYear(), monthNumber, day[dateIndex++] + 1, String(regex) == String(getLunch) ? 12 : 19).toUTCString();
             parsedData.push(tmp);
 
             tmp = {
+                meal: String(regex) == String(getLunch) ? "lunch" : "dinner",
                 date: "",
                 first_course: [],
                 second_course: [],
