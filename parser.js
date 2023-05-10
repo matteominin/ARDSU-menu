@@ -79,7 +79,7 @@ async function parseData(dataBuffer, regex, monthNumber) {
         count = (count + 1) % 3;
 
         if (count == 0) {
-            tmp.date = new Date(new Date().getFullYear(), monthNumber, day[dateIndex++] + 1, String(regex) == String(getLunch) ? 12 : 19).toUTCString();
+            tmp.date = new Date(new Date().getFullYear(), monthNumber, day[dateIndex++], String(regex) == String(getLunch) ? 12 : 19).toUTCString();
             parsedData.push(tmp);
 
             tmp = {
