@@ -5,6 +5,7 @@ const pdf = require("pdf-parse");
 const getPdf = /(?<=<strong>Calamandrei&nbsp; &nbsp;<\/strong><br \/>\n<a href=")(.*)(?=")/gm
 const clearUrl = /\/[^\/]+(?=\/$|$)/g;
 const getLunch = /(?<=P\s+R\s+A\s+N\s+\s+Z\s+O)(.*)(?=C\s+E\s+N\s+A)/gms;
+const dateExtractor = /LUNEDI\W (.*)/g;
 
 
 async function getPdfUrl() {
@@ -29,6 +30,9 @@ async function parseData(dataBuffer, regex, monthNumber) {
     //scraping text from pdf
     let text = await pdf(dataBuffer);
     text = text.text;
+    
+    let day = text.match(dateExtractor)[0];
+    day = day.match(/\d+/g);
 
     //filtering text
     text = text.match(regex)[0];
@@ -46,7 +50,6 @@ async function parseData(dataBuffer, regex, monthNumber) {
     let count = 0;
     let i = 0;
     let dateIndex = 0;
-    let day = [8, 9, 10, 11, 12, 13];
 
     let tmp = {
         meal: String(regex) == String(getLunch) ? "lunch" : "dinner",
@@ -79,7 +82,14 @@ async function parseData(dataBuffer, regex, monthNumber) {
         count = (count + 1) % 3;
 
         if (count == 0) {
-            tmp.date = new Date(new Date().getFullYear(), monthNumber, day[dateIndex++], String(regex) == String(getLunch) ? 12 : 19).toUTCString();
+            if(dateIndex != 0 && day[dateIndex] > day[dateIndex-1])
+                tmp.date = new Date(new Date().getFullYear(), monthNumber, day[dateIndex++], String(regex) == String(getLunch) ? 12 : 19).toUTCString();
+            else if(dateIndex == 0)
+                tmp.date = new Date(new Date().getFullYear(), monthNumber, day[dateIndex++], String(regex) == String(getLunch) ? 12 : 19).toUTCString();
+            else
+                //if the date is not present in the current month increase to the next one 
+                tmp.date = new Date(new Date().getFullYear(), monthNumber, day[dateIndex++], String(regex) == String(getLunch) ? 12 : 19).toUTCString();
+                
             parsedData.push(tmp);
 
             tmp = {
