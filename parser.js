@@ -11,11 +11,11 @@ const dateExtractor = /LUNEDI\W (.*)/g;
 async function getPdfUrl() {
     const res = await fetch("https://www.dsu.toscana.it/i-menu");
     let data = await res.text();
+    fs.writeFileSync("data.html", data);
     let url = "https://www.dsu.toscana.it" + data.match(getPdf)[0];
     url = url.replace(clearUrl, "");
     return url;
 }
-
 
 //regex that matches the all the string before the last "/"
 const getFileName = /[^\/]+(?=\/$|$)/g;

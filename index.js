@@ -29,6 +29,44 @@ app.get("/dinner", async (req, res) => {
     res.send(obj);
 })
 
+app.get("/today/lunch", async (req, res) => {
+  const url = await getPdfUrl();
+  let today = new Date().getDate();
+  const buffer = await loadPdf(url);
+  let obj = await parseData(buffer, getLunch, today);
+  let resObj = {};
+
+  for(let i=0; i<obj.length; i++) {
+    let tmpDate = new Date(obj[i].date).getUTCDate();
+
+    if(today == tmpDate) {
+      resObj = obj[i];
+      break;
+    }
+  }
+
+  res.json(resObj)
+})
+
+app.get("/today/dinner", async (req, res) => {
+  const url = await getPdfUrl();
+  let today = new Date().getDate();
+  const buffer = await loadPdf(url);
+  let obj = await parseData(buffer, getDinner, today);
+  let resObj = {};
+  
+  for(let i=0; i<obj.length; i++) {
+    let tmpDate = new Date(obj[i].date).getUTCDate();
+
+    if(today == tmpDate) {
+      resObj = obj[i];
+      break;
+    }
+  }
+
+  res.json(resObj)
+})
+
 
 app.listen(port, () => {
   console.log(`PORT: ${port} online`);
