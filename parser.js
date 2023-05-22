@@ -1,5 +1,3 @@
-const { clear } = require('console');
-const fs = require('fs');
 const pdf = require("pdf-parse");
 
 const getPdf = /(?<=<strong>Calamandrei&nbsp; &nbsp;<\/strong><br \/>\n<a href=")(.*)(?=")/gm
@@ -11,7 +9,6 @@ const dateExtractor = /LUNEDI\W (.*)/g;
 async function getPdfUrl() {
     const res = await fetch("https://www.dsu.toscana.it/i-menu");
     let data = await res.text();
-    fs.writeFileSync("data.html", data);
     let url = "https://www.dsu.toscana.it" + data.match(getPdf)[0];
     url = url.replace(clearUrl, "");
     return url;
