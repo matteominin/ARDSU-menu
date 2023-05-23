@@ -12,9 +12,8 @@ function main() {
 
 //fetch api
 function getMeals() {
-  const lunchRes = UrlFetchApp.fetch(BASE_API_URL + "/lunch");
-  const dinnerRes = UrlFetchApp.fetch(BASE_API_URL + "/dinner");
-  return {lunch: JSON.parse(lunchRes.getContentText()), dinner: JSON.parse(dinnerRes.getContentText())};
+  const lunchRes = UrlFetchApp.fetch(BASE_API_URL);
+  return JSON.parse(lunchRes);
 }
 
 function createEvent(meal, typeMeal) {
