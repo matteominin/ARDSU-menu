@@ -1,6 +1,6 @@
-# ARDSU MENU API
+# ARDSU menù API
 The API allows you to fetch the ****ARDSU CANTEEN**** from the [online PDF](https://www.dsu.toscana.it/i-menu). 
-The API retrieves the menu and returns it in a structured JSON format, making it easy to integrate into your own applications.
+The API retrieves the menù and returns it in a structured JSON format, making it easy to integrate into your own applications.
 
 ## Installation
 To install locally run:
@@ -12,10 +12,10 @@ No external package required
 ## Usage
 The API has 5 enpoints, perform a GET request to one of these URL in order to get the JSON response:
 - / (returns the menù  of the current week)
-- /lunch (returns the lunch menu of the current week)
-- /dinner ( returns the dinner menu of the current week )
-- /today/lunch (returns the lunch menu for the current day)
-- /today/dinner (returns the dinner menu for the current day)
+- /lunch (returns the lunch menù of the current week)
+- /dinner ( returns the dinner menù of the current week )
+- /today/lunch (returns the lunch menù for the current day)
+- /today/dinner (returns the dinner menù for the current day)
 
 ## Response
 The api will send back a JSON obj like this:
@@ -79,10 +79,10 @@ This `REQUIRED_DAYS` settings will display only lunch on Sunday, Wednesday and d
 
 3. Change the `BASE_API_URL` with your api url
 
-4. Set in Apps Script an [activator](https://developers.google.com/apps-script/guides/triggers/installable?hl=it#time-driven_triggers) that runs the script every Monday Morning (TODO: fix the issues that comes when the canteen doesn't upload the menu on time :skull:)
+4. Set in Apps Script an [activator](https://developers.google.com/apps-script/guides/triggers/installable?hl=it#time-driven_triggers) that runs the script every Monday Morning (TODO: fix the issues that comes when the canteen doesn't upload the menù on time :skull:)
 
 ## IOS (Scriptable + Shortcut)
-You can set up an icon on ios that once clicked returns the menu of the current day (lunch / dinner) based on the current hour.
+You can set up an icon on ios that once clicked returns the menù of the current day (lunch / dinner) based on the current hour.
 
 1. Paste the scipt in [/scripts/scriptable.js](/scirpts/scriptable.js) on scriptable
 2. Replace `BASE_API_URL` with your API link
