@@ -84,7 +84,7 @@ This `REQUIRED_DAYS` settings will display only lunch on Sunday, Wednesday and d
 ## IOS (Scriptable + Shortcut)
 You can set up an icon on ios that once clicked returns the menù of the current day (lunch / dinner) based on the current hour.
 
-1. Paste the scipt in [/scripts/scriptable.js](/scirpts/scriptable.js) on scriptable
+1. Paste the script in [/scripts/scriptable.js](/scripts/scriptable.js) on scriptable
 2. Replace `BASE_API_URL` with your API link
 3. Add the Shortcut from https://www.icloud.com/shortcuts/4b9d37e8d6054d5cac4bcdc3bb08c46
 4. Add the Shortcut to home and click it to get daily menù
