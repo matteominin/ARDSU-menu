@@ -24,7 +24,6 @@ In order to make it working modify the following parameters:
    ```javascript
    const CALENDAR_ID = "GOOGLE_CALENDAR_ID";
    ```
-   The id should have this format: `ALPHA_NUMERIC_ID@group.calendar.google.com`
    [How to find Google calendar id](https://xfanatical.com/blog/how-to-find-your-google-calendar-id/)
 
 2. Set the days and meals you want to display on the calendar
