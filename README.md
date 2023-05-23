@@ -17,6 +17,34 @@ The API has 5 enpoints, perform a GET request to one of these URL in order to ge
 - /today/lunch (returns the lunch menu for the current day)
 - /today/dinner (returns the dinner menu for the current day)
 
+## Response
+The api will send back a JSON obj like this:
+```json
+   [
+    {
+        "meal": "lunch",
+        "date": "Mon, 22 May 2023 12:00:00 GMT",
+        "first_course": [
+            "Pasta all’arrabbiata",
+            ...
+        ],
+        "second_course": [
+            "Fesa di tacchino arrosto",
+            ...
+        ],
+        "side_dish": [
+            "Fagioletti verdi pepe e olio",
+            ..
+        ]
+    },
+    {
+      "meal": ...
+      ...
+    }
+   ]
+```
+`date` is in UTC format (optized for Google Apps Script)
+
 ## Google calendar
 Copy paste the script [/Google/calendar-script.js](/scripts/googleCalendar.js) in a new project on [Google Apps Script](https://script.google.com)
 In order to make it working modify the following parameters:
