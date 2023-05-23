@@ -24,12 +24,23 @@ In order to make it working modify the following parameters:
    ```javascript
    const CALENDAR_ID = "GOOGLE_CALENDAR_ID";
    ```
-The id should have this format: ```ALPHA_NUMERIC_ID@group.calendar.google.com```\
-
-
-
+   The id should have this format: ```ALPHA_NUMERIC_ID@group.calendar.google.com```
 
 2. Set the days and meals you want to display on the calendar
    ```javascript
-   const requiredDays = [[3, "lunch"], [4, "lunch"], [5, "lunch"]];
+   const requiredDays = [ [DAY_INDEX, OPTION], [DAY_INDEX, OPTION] ];
    ```
+   ### DAY INDEX
+   Select the required day by specifying the day index
+   | index | day |
+   |--------|------- |
+   | 0     | Sunday |
+   | 1     | Monday |
+   | 2     | Tuesday |
+   | 3     | Wednesday |
+   | 4     | Thursday |
+   | 5     | Friday |
+   | 6     | Saturday |
+   
+   ### OPTION
+   Specify the required meal for the selected day using the keys ```lunch``` or ```dinner``` (*you can use both*)
