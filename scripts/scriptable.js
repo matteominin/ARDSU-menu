@@ -1,5 +1,6 @@
 const BASE_API_URL = "BASE_API_URL" //CHANGE WITH YOUR API URL
-let data = new Request(BASE_API_URL)
+let meal = new Date().getHours() < 15 ? "lunch" : "dinner";
+let data = new Request(BASE_API_URL + "/today/" + meal)
 data = await data.loadJSON()
 
 //create event description
