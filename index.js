@@ -1,7 +1,5 @@
-const fs = require("fs");
 const express = require("express");
 const { getPdfUrl, parseData, loadPdf } = require("./parser.js");
-const { parse } = require("path");
 const app = express();
 const port = process.env.PORT || 3000;
 const months = ["gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno","luglio", "agosto", "settembre", "ottobre", "novembre", "dicembre"];
