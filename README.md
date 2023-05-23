@@ -24,13 +24,14 @@ In order to make it working modify the following parameters:
    ```javascript
    const CALENDAR_ID = "GOOGLE_CALENDAR_ID";
    ```
-   The id should have this format: ```ALPHA_NUMERIC_ID@group.calendar.google.com```
+   The id should have this format: `ALPHA_NUMERIC_ID@group.calendar.google.com`
+   [How to find Google calendar id](https://xfanatical.com/blog/how-to-find-your-google-calendar-id/)
 
 2. Set the days and meals you want to display on the calendar
    ```javascript
-   const requiredDays = [ [DAY_INDEX, OPTION], [DAY_INDEX, OPTION] ];
+   const REQUIRED_DAYS = [ [DAY_INDEX, OPTION], [DAY_INDEX, OPTION] ];
    ```
-   ### DAY INDEX
+   **DAY_INDEX**
    Select the required day by specifying the day index
    | index | day |
    |--------|------- |
@@ -42,5 +43,14 @@ In order to make it working modify the following parameters:
    | 5     | Friday |
    | 6     | Saturday |
    
-   ### OPTION
-   Specify the required meal for the selected day using the keys ```lunch``` or ```dinner``` (*you can use both*)
+   **OPTION**
+   Specify the required meal for the selected day using the keys `lunch` or `dinner` (*you can use both*)
+   
+```const REQUIRED_DAYS = [ [0, "lunch"], [3, "lunch", "dinner"], [4, "dinner"] ]```
+
+This `REQUIRED_DAYS` settings will display only lunch on Sunday, Wednesday and dinner on Wednesday, Thursday 
+
+3. Change the `BASE_API_URL` with your api url
+
+4. Set in Apps Script an [activator](https://developers.google.com/apps-script/guides/triggers/installable?hl=it#time-driven_triggers) that runs the script every Monday Morning (To be fixed the issues that comes when the canteen doesn't upload the menu on time :skull:)
+
