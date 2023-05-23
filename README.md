@@ -11,14 +11,14 @@ No external package required
 
 ## Usage
 The API has 5 enpoints, perform a GET request to one of these URL in order to get the JSON response:
-- / (returns the menu of the current week)
+- / (returns the menù  of the current week)
 - /lunch (returns the lunch menu of the current week)
 - /dinner ( returns the dinner menu of the current week )
 - /today/lunch (returns the lunch menu for the current day)
 - /today/dinner (returns the dinner menu for the current day)
 
 ## Google calendar
-Copy paste the script [/Google/calendar-script.js](/Google/calendar-script.js) in a new project on [Google Apps Script](https://script.google.com)
+Copy paste the script [/Google/calendar-script.js](/scripts/googleCalendar.js) in a new project on [Google Apps Script](https://script.google.com)
 In order to make it working modify the following parameters:
 1. Set the Calendar ID of your Google calendar
    ```javascript
@@ -51,5 +51,12 @@ This `REQUIRED_DAYS` settings will display only lunch on Sunday, Wednesday and d
 
 3. Change the `BASE_API_URL` with your api url
 
-4. Set in Apps Script an [activator](https://developers.google.com/apps-script/guides/triggers/installable?hl=it#time-driven_triggers) that runs the script every Monday Morning (To be fixed the issues that comes when the canteen doesn't upload the menu on time :skull:)
+4. Set in Apps Script an [activator](https://developers.google.com/apps-script/guides/triggers/installable?hl=it#time-driven_triggers) that runs the script every Monday Morning (TODO: fix the issues that comes when the canteen doesn't upload the menu on time :skull:)
 
+## IOS (Scriptable + Shortcut)
+You can set up an icon on ios that once clicked returns the menu of the current day (lunch / dinner) based on the current hour.
+
+1. Paste the scipt in [/scripts/scriptable.js](/scirpts/scriptable.js) on scriptable
+2. Replace `BASE_API_URL` with your API link
+3. Add the Shortcut from https://www.icloud.com/shortcuts/4b9d37e8d6054d5cac4bcdc3bb08c46
+4. Add the Shortcut to home and click it to get daily menù
