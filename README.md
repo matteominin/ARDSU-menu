@@ -1,7 +1,7 @@
 # ARDSU MENU' API
 <img src="https://pisa.guidatoscana.it/obj/image/10292392_10152580791221745_2638607288562931435_n.png" width="150px"/>
 
-The API allows you to fetch the ****ARDSU CANTEEN**** from the [online PDF](https://www.dsu.toscana.it/i-menu). 
+The API allows you to fetch the ****ARDSU CANTEEN MENU'**** from the [online PDF](https://www.dsu.toscana.it/i-menu). 
 The API retrieves the menù and returns it in a structured JSON format, making it easy to integrate into your own applications.
 
 ## Installation
